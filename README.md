@@ -25,6 +25,9 @@ There are some conditions to pass the project
 6. Found lanes are similar to original lanes
 
 
+(gif 이미지 : 최종 짤)
+
+
 # Background Learning
 
 ### Camera calibration
@@ -308,6 +311,9 @@ def warp(combined_binary):
     return [warped,Minv]
 ```
 
+(이미지 : after warp)
+
+
 ### 4. Find lane 
 
 Find lanes using sliding window method
@@ -483,6 +489,9 @@ def fit_prev_polynomial(binary_warped, left_fit_prev, right_fit_prev):
 ```
 
 
+(이미지 : after finding lanes)
+
+
 ### 5. Calculate curvature and distance from center
 
 Calculate lane curvature by using partial derivative and distance from center
@@ -564,6 +573,8 @@ def fill_color_in_line(img_warp, left_fitx, right_fitx, ploty, undistort, Minv):
     return result
 ```
 
+(이미지 : after fill color on image)
+
 
 ### 7. Write curvature and distance from center data on image
 
@@ -594,6 +605,8 @@ def write_curve_data(color_filled_img, left_curverad, right_curverad, center_dis
     
     return curve_in_img
 ```
+
+(이미지 : after writing data on image)
 
 
 ### 8. Define line class
@@ -725,15 +738,29 @@ HTML("""
 
 # Results
 
+This is gif images edited at important moments
 
-![alt text][image3-1]
 
-
+(gif 이미지 : 최종 결과 짤)
 
 
 # Conclusion & Discussion
 
-### 1. data set
+### 1. About combination of gradient threshold
+
+라인을 찾기 위해 gradient threshold 를 이용하면 유용하다는 점에는 동의한다
+
+하지만 지금처럼 단순한 영상만 봐도 그림자, 비포장도로 등 픽셀 조건이 달라지는 구간에서는 혼선이 오는데
+
+실제 도로 주행 조건에서는 무한대의 변화 조건이 있을테고 그 모든 조건들을 다 하드코딩한다는건 불가능할 것
+
+결국 궁극적으로는 머신러닝을 이용하여 가능한 많은 조건을 다 학습시켜 스스로 판단을 통해 라인을 찾아 내도록 해야할 것
+
+### 2. About using warp
+
+카메라 이미지의 구간을 한정해놓고 라인을 찾는다는건, 차가 정상적이지 않은 상황에서는 라인을 찾을 수 없다는 의미
+
+실제로 자율주행차에서 사용하기 위해서는 지금처럼 구간을 정하는 방법보다는 딥러닝등을 이용해서 어떤 상황에서도 라인을 찾을 수 있도록 해야함
 
 
 
