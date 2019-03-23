@@ -4,14 +4,7 @@
 [//]: # (Image References)
 
 [image1-1]: ./images/1.1_Percaptron,Lambda.JPG "RESULT1"
-[image1-2]: ./images/2.LeNet.JPG "RESULT2"
-[image1-3]: ./images/3.Center,Left,Right_images.JPG "RESULT3"
-[image1-4]: ./images/4.Cropping.JPG "RESULT4"
-[image1-5]: ./images/5.NVIDIA_architecture.JPG "RESULT5"
 
-[image2-1]: ./images/NVIDIA_CNN_architecture.png "NVIDIA"
-
-[image3-1]: ./images/동영상_스크릿샷.png "RESULT VIDEO"
 
 # Introduction
 
@@ -67,6 +60,57 @@ Use `cv2.findChessboardCorners` & `cv2.drawChessboardCorners` & `cv2.calibrateCa
 As a rusult I can get `mtx`, `dist`
 
 Using `mtx`, `dist`, `cv2.undistort` calibrate test image
+
+#### 1. Define cam_cal function : find mtx, dist using chessboard images
+
+```
+def cam_cal(cam_cal_img_gray):
+    
+    nx = 9
+    ny = 5
+
+    ret, corners = cv2.findChessboardCorners(cam_cal_img_gray, (nx,ny), None)
+
+    if ret == True:
+        cv2.drawChessboardCorners(cam_cal_img, (nx,ny), corners, ret)
+        #plt.imshow(cam_cal_img)
+
+    objpoints = []
+    imgpoints = []
+
+    objp = np.zeros((9*5, 3), np.float32)
+    objp[:,:2] = np.mgrid[0:9, 0:5].T.reshape(-1,2)
+
+    if ret == True:
+        imgpoints.append(corners)
+        objpoints.append(objp)
+
+    ret, mtx, dist, rvecs, tvecs = cv2.calibrateCamera(objpoints, imgpoints, cam_cal_img_gray.shape[::-1], None, None)
+    
+    return ret, mtx, dist, rvecs, tvecs
+```
+
+
+#### 2. Define undistort function : undistort camera pictured image using cv2.undistort
+
+```
+def undistort_img(img_gray, mtx, dist):
+    
+    undistorted_img = cv2.undistort(img_gray, mtx, dist, None, mtx)
+    
+    return undistorted_img
+```
+
+(이미지 : before calibration)
+
+(이미지 : after calibration)
+
+(이미지 : before calibration test)
+
+(이미지 : after calibration test)
+
+
+### 2. Threshold image
 
 
 
