@@ -34,13 +34,40 @@ There are some conditions to pass the project
 
 # Background Learning
 
-### Keras
+### Camera calibration
+
+- Camera calibration using cv2 library
+
+- Perspective transform
+
+### Gradients and color spaces
+
+- Gradient threshold
+
+- Various color spaces
+
+### Advanced Computer Vision
+
+- Finding lanes using histogram
+
+- Finding lanes using sliding window
+
+- Finding lanes using prior detection
+
+- Measuring curvature
 
 
 
 # Approach
 
-### 1. Just 1 perceptron and Lambda Normalization (only using center camera images)
+### 1. Image calibration
+
+Use `cv2.findChessboardCorners` & `cv2.drawChessboardCorners` & `cv2.calibrateCamera` to calibrate camera
+
+As a rusult I can get `mtx`, `dist`
+
+Using `mtx`, `dist`, `cv2.undistort` calibrate test image
+
 
 
 
