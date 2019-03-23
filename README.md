@@ -63,7 +63,7 @@ Using `mtx`, `dist`, `cv2.undistort` calibrate test image
 
 #### 1. Define cam_cal function : find mtx, dist using chessboard images
 
-```
+```python
 def cam_cal(cam_cal_img_gray):
     
     nx = 9
@@ -93,7 +93,7 @@ def cam_cal(cam_cal_img_gray):
 
 #### 2. Define undistort function : undistort camera pictured image using cv2.undistort
 
-```
+```python
 def undistort_img(img_gray, mtx, dist):
     
     undistorted_img = cv2.undistort(img_gray, mtx, dist, None, mtx)
