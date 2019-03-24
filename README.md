@@ -13,7 +13,7 @@
 [image1-8]: ./images/8.AFTER_FILL_COLOR_IMAGE.png "RESULT8"
 [image1-9]: ./images/9.AFTER_WRITING_CURVE_IMAGE.png "RESULT9"
 
-[image2-1]: ./images/result.png "RESULT_GIF"
+[image2-1]: ./images/result.gif "RESULT_GIF"
 
 
 # Introduction
