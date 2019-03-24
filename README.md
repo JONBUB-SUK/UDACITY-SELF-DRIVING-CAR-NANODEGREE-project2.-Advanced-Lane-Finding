@@ -36,6 +36,7 @@ There are some conditions to pass the project
 
 
 ##### OUTPUT VIDEO
+
 ![alt text][image2-1]
 
 
@@ -292,6 +293,8 @@ def combined_gradient_threshold(img_gray, img_hls, img_lab):
     return combined_binary
 ```
 
+##### AFTER THRESHOLD TEST IMAGE
+
 ![alt text][image1-5]
 
 
@@ -330,6 +333,8 @@ def warp(combined_binary):
     
     return [warped,Minv]
 ```
+
+##### AFTER WARP TEST IMAGE
 
 ![alt text][image1-6]
 
@@ -508,6 +513,7 @@ def fit_prev_polynomial(binary_warped, left_fit_prev, right_fit_prev):
     return [out_img, ploty, left_fitx, right_fitx, left_lane_inds, right_lane_inds]
 ```
 
+##### AFTER FINDING LANES TEST IMAGE
 
 ![alt text][image1-7]
 
@@ -593,6 +599,8 @@ def fill_color_in_line(img_warp, left_fitx, right_fitx, ploty, undistort, Minv):
     return result
 ```
 
+##### AFTER FILLING COLOR ON TEST IMAGE
+
 ![alt text][image1-8]
 
 
@@ -625,6 +633,8 @@ def write_curve_data(color_filled_img, left_curverad, right_curverad, center_dis
     
     return curve_in_img
 ```
+
+##### AFTER WRITING DATA ON TEST IMAGE
 
 ![alt text][image1-9]
 
@@ -760,6 +770,7 @@ HTML("""
 
 This is gif images edited at important moments
 
+##### OUTPUT VIDEO
 
 ![alt text][image2-1]
 
@@ -768,20 +779,31 @@ This is gif images edited at important moments
 
 ### 1. About combination of gradient threshold
 
-라인을 찾기 위해 gradient threshold 를 이용하면 유용하다는 점에는 동의한다
+At this Nanodegree first project, I used only canny edge detection to find lanes
 
-하지만 지금처럼 단순한 영상만 봐도 그림자, 비포장도로 등 픽셀 조건이 달라지는 구간에서는 혼선이 오는데
+But in this project, I added more method
 
-실제 도로 주행 조건에서는 무한대의 변화 조건이 있을테고 그 모든 조건들을 다 하드코딩한다는건 불가능할 것
+But in real driving, there exists infinite conditions
 
-결국 궁극적으로는 머신러닝을 이용하여 가능한 많은 조건을 다 학습시켜 스스로 판단을 통해 라인을 찾아 내도록 해야할 것
+So finding every condition and tuning code is impossible
+
+Therefore I think only solution is applying machine learning to detect lanes on itself
+
+In this Nanodegree program, it is last class of computer vision,
+
+so I am willing to enroll computer vision and deeplearning Nanodegree program
+
+I was so satisfied with this project, and really anticipating after classes
+
+
 
 ### 2. About using warp
 
-카메라 이미지의 구간을 한정해놓고 라인을 찾는다는건, 차가 정상적이지 않은 상황에서는 라인을 찾을 수 없다는 의미
+In this method, I applied masking that restrict area detecting lines
 
-실제로 자율주행차에서 사용하기 위해서는 지금처럼 구간을 정하는 방법보다는 딥러닝등을 이용해서 어떤 상황에서도 라인을 찾을 수 있도록 해야함
+Conversely thinking, that means if there were no lines in that area, I cannot find lines
 
+So it cannot apply to real condition self-driving car
 
 
 
