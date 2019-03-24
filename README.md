@@ -15,6 +15,8 @@
 
 [image2-1]: ./images/result.gif "RESULT_GIF"
 
+[image3-1]: ./images/Function_Flow.jpg "FUNCTION FLOW"
+
 
 # Introduction
 
@@ -68,6 +70,9 @@ There are some conditions to pass the project
 
 
 # Approach
+
+![alt text][image3-1]
+
 
 ### 1. Image calibration
 
