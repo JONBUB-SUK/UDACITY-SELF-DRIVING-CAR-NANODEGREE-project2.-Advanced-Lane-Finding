@@ -35,6 +35,7 @@ There are some conditions to pass the project
 6. Found lanes are similar to original lanes
 
 
+##### OUTPUT VIDEO
 ![alt text][image2-1]
 
 
@@ -115,11 +116,19 @@ def undistort_img(img_gray, mtx, dist):
     return undistorted_img
 ```
 
+##### BEFORE CALIBRATION CHESSBOARD IMAGE
+
 ![alt text][image1-1]
+
+##### AFTER CALIBRATION CHESSBOARD IMAGE
 
 ![alt text][image1-2]
 
+##### BEFORE CALIBRATION TEST IMAGE
+
 ![alt text][image1-3]
+
+##### AFTER CALIBRATION TEST IMAGE
 
 ![alt text][image1-4]
 
