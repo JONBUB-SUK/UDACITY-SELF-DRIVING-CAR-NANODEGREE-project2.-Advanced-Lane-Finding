@@ -71,7 +71,6 @@ There are some conditions to pass the project
 
 # Approach
 
-![alt text][image3-1]
 
 
 ### 1. Image calibration
@@ -768,6 +767,9 @@ HTML("""
 </video>
 """.format(white_output))
 ```
+
+
+![alt text][image3-1]
 
 
 
