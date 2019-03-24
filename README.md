@@ -3,7 +3,17 @@
 
 [//]: # (Image References)
 
-[image1-1]: ./images/1.1_Percaptron,Lambda.JPG "RESULT1"
+[image1-1]: ./images/1.BEFORE_CALIBRATION_IMAGE.png "RESULT1"
+[image1-2]: ./images/2.AFTER_CALIBRATION_IMAGE.png "RESULT2"
+[image1-3]: ./images/3.BEFORE_CALIBRATION_TEST_IMAGE.png "RESULT3"
+[image1-4]: ./images/4.AFTER_CALIBRATION_TEST_IMAGE.png "RESULT4"
+[image1-5]: ./images/5.AFTER_THRESHOLD_IMAGE.png "RESULT5"
+[image1-6]: ./images/6.AFTER_WARP_IMAGE.png "RESULT6"
+[image1-7]: ./images/7.AFTER_FINDING_LANE_IMAGE.png "RESULT7"
+[image1-8]: ./images/8.AFTER_FILL_COLOR_IMAGE.png "RESULT8"
+[image1-9]: ./images/9.AFTER_WRITING_CURVE_IMAGE.png "RESULT9"
+
+[image2-1]: ./images/result.png "RESULT_GIF"
 
 
 # Introduction
@@ -25,7 +35,8 @@ There are some conditions to pass the project
 6. Found lanes are similar to original lanes
 
 
-(gif 이미지 : 최종 짤)
+![alt text][image2-1]
+
 
 
 # Background Learning
@@ -104,13 +115,13 @@ def undistort_img(img_gray, mtx, dist):
     return undistorted_img
 ```
 
-(이미지 : before calibration)
+![alt text][image1-1]
 
-(이미지 : after calibration)
+![alt text][image1-2]
 
-(이미지 : before calibration test)
+![alt text][image1-3]
 
-(이미지 : after calibration test)
+![alt text][image1-4]
 
 
 ### 2. Threshold image
@@ -272,7 +283,7 @@ def combined_gradient_threshold(img_gray, img_hls, img_lab):
     return combined_binary
 ```
 
-(이미지 : after threshold)
+![alt text][image1-5]
 
 
 ### 3. Warp image
@@ -311,7 +322,7 @@ def warp(combined_binary):
     return [warped,Minv]
 ```
 
-(이미지 : after warp)
+![alt text][image1-6]
 
 
 ### 4. Find lane 
@@ -489,7 +500,7 @@ def fit_prev_polynomial(binary_warped, left_fit_prev, right_fit_prev):
 ```
 
 
-(이미지 : after finding lanes)
+![alt text][image1-7]
 
 
 ### 5. Calculate curvature and distance from center
@@ -573,7 +584,7 @@ def fill_color_in_line(img_warp, left_fitx, right_fitx, ploty, undistort, Minv):
     return result
 ```
 
-(이미지 : after fill color on image)
+![alt text][image1-8]
 
 
 ### 7. Write curvature and distance from center data on image
@@ -606,7 +617,7 @@ def write_curve_data(color_filled_img, left_curverad, right_curverad, center_dis
     return curve_in_img
 ```
 
-(이미지 : after writing data on image)
+![alt text][image1-9]
 
 
 ### 8. Define line class
@@ -741,7 +752,7 @@ HTML("""
 This is gif images edited at important moments
 
 
-(gif 이미지 : 최종 결과 짤)
+![alt text][image2-1]
 
 
 # Conclusion & Discussion
