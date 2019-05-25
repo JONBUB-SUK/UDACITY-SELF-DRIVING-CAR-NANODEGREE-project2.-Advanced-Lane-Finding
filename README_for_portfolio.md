@@ -21,21 +21,15 @@
 
 ## 1. Abstract
 
-The object of the project is finding lanes at driving car videos
+The purpose of this project is finding lanes at driving car videos
 
-There are some conditions to pass the project
+Firstly, I need to calibrate camera because it is distorted
 
-1. Have to calibrate camera
+Secondly, I will apply pixel threshold to detect line and crop small area line should exist and warp it
 
-2. Calculate curvature of lane at each frame
+Thirdly, to detect lines at the image I warped, I will use sliding window algorithm
 
-3. Calculate distance from center at each frame
-
-4. Make lane class to use before detection information
-
-5. Draw lines on found lanes and fill color inside of lines
-
-6. Found lanes are similar to original lanes
+Finally, I made a Class Line so that I can detect lines in video more effectively
 
 
 ## 2. Related Study
@@ -663,9 +657,7 @@ HTML("""
 
 ## 4. Results
 
-This is gif images edited at important moments
-
-##### OUTPUT VIDEO
+This is gif images
 
 ![alt text][image2-1]
 
