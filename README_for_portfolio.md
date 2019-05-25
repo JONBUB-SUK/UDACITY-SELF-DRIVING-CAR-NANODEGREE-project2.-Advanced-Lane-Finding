@@ -114,9 +114,9 @@ def undistort_img(img_gray, mtx, dist):
     return undistorted_img
 ```
 
-##### BEFORE CALIBRATION CHESSBOARD IMAGE
+###### BEFORE CALIBRATION CHESSBOARD IMAGE
 
-![alt text][image1-1]
+<img src="./images/1.BEFORE_CALIBRATION_IMAGE.png" width="400">
 
 ##### AFTER CALIBRATION CHESSBOARD IMAGE
 
@@ -752,10 +752,6 @@ HTML("""
 </video>
 """.format(white_output))
 ```
-
-
-![alt text][image3-1]
-
 
 
 ## 4. Results
