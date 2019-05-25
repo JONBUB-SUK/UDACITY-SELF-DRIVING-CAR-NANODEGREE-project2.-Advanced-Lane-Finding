@@ -116,7 +116,7 @@ def undistort_img(img_gray, mtx, dist):
 
 ###### Before & After Calibration Chessboard Image
 
-<img src="./images/1.BEFORE_CALIBRATION_IMAGE.png" width="400"> <img src="./images/1.AFTER_CALIBRATION_IMAGE.png" width="400">
+<img src="./images/1.BEFORE_CALIBRATION_IMAGE.png" width="400"> <img src="./images/2.AFTER_CALIBRATION_IMAGE.png" width="400">
 
 ##### AFTER CALIBRATION CHESSBOARD IMAGE
 
