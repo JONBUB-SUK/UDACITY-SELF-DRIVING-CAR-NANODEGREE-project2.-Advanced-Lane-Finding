@@ -118,17 +118,9 @@ def undistort_img(img_gray, mtx, dist):
 
 <img src="./images/1.BEFORE_CALIBRATION_IMAGE.png" width="400"> <img src="./images/2.AFTER_CALIBRATION_IMAGE.png" width="400">
 
-##### AFTER CALIBRATION CHESSBOARD IMAGE
+###### Before & After Calibration Test Image
 
-![alt text][image1-2]
-
-##### BEFORE CALIBRATION TEST IMAGE
-
-![alt text][image1-3]
-
-##### AFTER CALIBRATION TEST IMAGE
-
-![alt text][image1-4]
+<img src="./images/3.BEFORE_CALIBRATION_TEST_IMAGE.png" width="400"> <img src="./images/4.AFTER_CALIBRATION_TEST_IMAGE.png" width="400">
 
 
 #### 2) Threshold image
@@ -289,9 +281,9 @@ def combined_gradient_threshold(img_gray, img_hls, img_lab):
     return combined_binary
 ```
 
-##### AFTER THRESHOLD TEST IMAGE
+###### AFTER THRESHOLD TEST IMAGE
 
-![alt text][image1-5]
+<img src="./images/5.AFTER_THRESHOLD_IMAGE.png" width="400">
 
 
 #### 3) Warp image
@@ -330,10 +322,9 @@ def warp(combined_binary):
     return [warped,Minv]
 ```
 
-##### AFTER WARP TEST IMAGE
+###### AFTER WARP TEST IMAGE
 
-![alt text][image1-6]
-
+<img src="./images/6.AFTER_WARP_IMAGE.png" width="400">
 
 #### 4) Find lane 
 
@@ -509,10 +500,9 @@ def fit_prev_polynomial(binary_warped, left_fit_prev, right_fit_prev):
     return [out_img, ploty, left_fitx, right_fitx, left_lane_inds, right_lane_inds]
 ```
 
-##### AFTER FINDING LANES TEST IMAGE
+###### AFTER FINDING LANES TEST IMAGE
 
-![alt text][image1-7]
-
+<img src="./images/7.AFTER_FINDING_LANE_IMAGE.png" width="400">
 
 #### 5) Calculate curvature and distance from center
 
@@ -595,10 +585,9 @@ def fill_color_in_line(img_warp, left_fitx, right_fitx, ploty, undistort, Minv):
     return result
 ```
 
-##### AFTER FILLING COLOR ON TEST IMAGE
+###### AFTER FILLING COLOR ON TEST IMAGE
 
-![alt text][image1-8]
-
+<img src="./images/8.AFTER_FILL_COLOR_IMAGE.png" width="400">
 
 #### 7) Write curvature and distance from center data on image
 
@@ -633,7 +622,7 @@ def write_curve_data(color_filled_img, left_curverad, right_curverad, center_dis
 ##### AFTER WRITING DATA ON TEST IMAGE
 
 ![alt text][image1-9]
-
+<img src="./images/9.AFTER_WRITING_CURVE_IMAGE.png" width="400">
 
 #### 8) Define line class
 
