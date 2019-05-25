@@ -187,7 +187,7 @@ def mag_thresh(img_gray, sobel_kernel=3, mag_thresh=(0, 255)):
 ````
 
 
-##### 3. Define dir_threshold function : threshold by using arctangent(y/x)
+###### 3. Define dir_threshold function : threshold by using arctangent(y/x)
 
 ```python
 def dir_threshold(img_gray, sobel_kernel=3, thresh=(np.pi/10, np.pi/3)):
@@ -207,7 +207,7 @@ def dir_threshold(img_gray, sobel_kernel=3, thresh=(np.pi/10, np.pi/3)):
 ```
 
 
-##### This is combination of 3 threshold function
+###### This is combination of 3 threshold function
 
 ```python
 def combined_gradient(img_gray):
@@ -223,10 +223,9 @@ def combined_gradient(img_gray):
     return combined_gradient
 ```
 
+② Using certain value gradient
 
-#### 2. Using certain value gradient
-
-##### 1. Define sat_threshold : using saturation threshold in HLS channels
+###### 1. Define sat_threshold : using saturation threshold in HLS channels
 
 ```python
 def sat_threshold(img_hls, thresh = (170, 255)):
@@ -240,7 +239,7 @@ def sat_threshold(img_hls, thresh = (170, 255)):
     return s_binary
 ```
 
-##### 2. Define lightness_thresh : using lightness threshold in HLS channels
+###### 2. Define lightness_thresh : using lightness threshold in HLS channels
 
 ```python
 def lightness_thresh(img_hls, thresh=(220, 255)):
@@ -255,7 +254,7 @@ def lightness_thresh(img_hls, thresh=(220, 255)):
     return binary_output
 ```
 
-##### 3. Define lab_b_thresh : using b threshold in LAB channels
+###### 3. Define lab_b_thresh : using b threshold in LAB channels
 
 ```python
 def lab_b_thresh(img_lab, thresh=(190,255)):
@@ -295,14 +294,14 @@ def combined_gradient_threshold(img_gray, img_hls, img_lab):
 ![alt text][image1-5]
 
 
-### 3. Warp image
+#### 3) Warp image
 
 To detect lanes I had to limit boundaries where lanes must be in
 
 That means by using this method, if car move away from road, it cannot find lanes
 
 
-#### 1. Define warp function : have to 4 points in each images (original, to enlarging)
+① Define warp function : have to 4 points in each images (original, to enlarging)
 
 ```python
 def warp(combined_binary):
@@ -336,11 +335,11 @@ def warp(combined_binary):
 ![alt text][image1-6]
 
 
-### 4. Find lane 
+#### 4) Find lane 
 
 Find lanes using sliding window method
 
-#### 1. Define find_lane_pixels function : this is for when did not detect lanes at before image
+① Define find_lane_pixels function : this is for when did not detect lanes at before image
 
 ```python
 def find_lane_pixels(binary_warped):
@@ -426,7 +425,7 @@ def find_lane_pixels(binary_warped):
 ```
 
 
-#### 2. Define fit_polynomial function : this is for when did not detect lanes at before image
+② Define fit_polynomial function : this is for when did not detect lanes at before image
 
 ```python
 def fit_polynomial(binary_warped):
@@ -460,7 +459,7 @@ def fit_polynomial(binary_warped):
     return [out_img, ploty, left_fitx, right_fitx, left_lane_inds, right_lane_inds]
 ```
 
-#### 3. Define fit_prev_polynomial function : this is for when did detect lanes at before image
+③ Define fit_prev_polynomial function : this is for when did detect lanes at before image
 
 ```python
 def fit_prev_polynomial(binary_warped, left_fit_prev, right_fit_prev):
@@ -515,12 +514,12 @@ def fit_prev_polynomial(binary_warped, left_fit_prev, right_fit_prev):
 ![alt text][image1-7]
 
 
-### 5. Calculate curvature and distance from center
+#### 5) Calculate curvature and distance from center
 
 Calculate lane curvature by using partial derivative and distance from center
 
 
-#### 1. Define calculate_curve_and_distance function
+① Define calculate_curve_and_distance function
 
 ```python
 def calculate_curve_and_distance(img_warp, left_lane_inds, right_lane_inds):
@@ -564,11 +563,11 @@ def calculate_curve_and_distance(img_warp, left_lane_inds, right_lane_inds):
 ```
 
 
-### 6. Fill color inside of detected lanes
+#### 6) Fill color inside of detected lanes
 
 Fill green color inside of detected lanes and red color at lanes
 
-#### 1. Define fill_color_in_line function
+① Define fill_color_in_line function
 
 ```python
 def fill_color_in_line(img_warp, left_fitx, right_fitx, ploty, undistort, Minv):
@@ -601,11 +600,11 @@ def fill_color_in_line(img_warp, left_fitx, right_fitx, ploty, undistort, Minv):
 ![alt text][image1-8]
 
 
-### 7. Write curvature and distance from center data on image
+#### 7) Write curvature and distance from center data on image
 
 Write data on image
 
-#### 1. Define write_curve_data function
+① Define write_curve_data function
 
 ```python
 def write_curve_data(color_filled_img, left_curverad, right_curverad, center_distance):
@@ -636,7 +635,7 @@ def write_curve_data(color_filled_img, left_curverad, right_curverad, center_dis
 ![alt text][image1-9]
 
 
-### 8. Define line class
+#### 8) Define line class
 
 This class is for using before detected information
 
@@ -684,11 +683,11 @@ R_line = Line()
 ```
 
 
-### 9. Final code (include everything)
+#### 9) Final code (include everything)
 
 This function will be used in VideoFileClip library
 
-#### 1. Define process_image : decide entire process flow
+① Define process_image : decide entire process flow
 
 ```python
 def process_image(img_rgb):
@@ -732,17 +731,13 @@ def process_image(img_rgb):
 ```
 
 
-### 10. Make video
+#### 10) Make video
 
-#### 1. Import libraried I need
 
 ```python
 from moviepy.editor import VideoFileClip
 from IPython.display import HTML
 ```
-
-#### 2. Make videos
-
 ```python
 white_output = 'test_videos_output/project_video_3.mp4'
 #clip1 = VideoFileClip("project_video.mp4").subclip(0,3)
@@ -750,9 +745,6 @@ clip1 = VideoFileClip("project_video.mp4")
 white_clip = clip1.fl_image(process_image) #NOTE: this function expects color images!!
 %time white_clip.write_videofile(white_output, audio=False)
 ```
-
-#### 3. Output videos
-
 ```python
 HTML("""
 <video width="960" height="540" controls>
@@ -766,7 +758,7 @@ HTML("""
 
 
 
-# Results
+## 4. Results
 
 This is gif images edited at important moments
 
@@ -775,9 +767,9 @@ This is gif images edited at important moments
 ![alt text][image2-1]
 
 
-# Conclusion & Discussion
+## 5. Discussion
 
-### 1. About combination of gradient threshold
+#### 1) About combination of gradient threshold
 
 At this Nanodegree first project, I used only canny edge detection to find lanes
 
@@ -796,7 +788,7 @@ so I am willing to enroll computer vision and deeplearning Nanodegree program
 I was so satisfied with this project, and really anticipating after classes
 
 
-### 2. About using warp
+#### 2) About using warp
 
 In this method, I applied masking that restrict area detecting lines
 
